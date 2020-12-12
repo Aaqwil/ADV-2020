@@ -1,7 +1,7 @@
 #include <concepts>
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <array>
 #include <list>
 
 template<typename T>
@@ -66,12 +66,25 @@ void fill_container_with(T& vector, U object_to_store)
 }
 
 template<container_of_printables T>
-void print_container(const T& c)
+void print_container(T& c)
 {
 	for (const auto& i : c)
 		std::cout << i << " ";
 	std::cout << std::endl;
 }
+
+struct object
+{
+	object() = default;
+	explicit object(std::string _) : m{ _ } {}
+
+	std::string m = "default";
+
+	friend std::ostream& operator<<(std::ostream& out, const object& o)
+	{
+		return out << o.m;
+	}
+};
 
 int main()
 {
@@ -79,13 +92,17 @@ int main()
 	fill_container_with(a, 10);
 	print_container(a);
 
-	std::array<unsigned, 5> b;
-	fill_container_with(b, 5u);
+	std::array<std::string, 5> b;
+	fill_container_with(b, "thing");
 	print_container(b);
 
 	double c[15];
 	fill_container_with(c, 9.9);
 	print_container(c);
+
+	std::list<object> d(3);
+	fill_container_with(d, object{ "initialized_object" });
+	print_container(d);
 
 	return 0;
 }
