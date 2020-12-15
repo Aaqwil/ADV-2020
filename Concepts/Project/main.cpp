@@ -11,15 +11,14 @@
 	Na pierwszy rzut oka widaæ, ¿e szablony nijak nie nadaj¹ siê dla wszystkich istniej¹cych typów danych.
 	Zadanie polega na tym, ¿eby stworzyæ odpowiednie koncepty, które narzuc¹ na podane szablony poprawne wymagania.
 	Po zbudowaniu konceptów u¿ycie szablonów nie powinno byæ sztucznie ograniczone - poprawne wczeœniej wywo³ania nadal powinny byæ poprawne.
-	Podczas wykonywania zadania przydatne mog¹ byæ static_asserty.
+	Podczas wykonywania zadania przydatne mog¹ byæ static_asserty oraz koncepty znajduj¹ce siê ju¿ w bibliotece standardowej.
 	Nie nale¿y siê sugerowaæ iloœci¹ szablonów ani parametrów - poprawne rozwi¹zanie mo¿e siê sk³adaæ z dowolnej liczby dowolnie zbudowanych konceptów.
-	Do rozpoczêcia pracy przydatne mog¹ byæ koncepty znajduj¹ce siê w std::ranges.
-	Zak³adamy, ¿e ma³o standardowe kontenery nas nie interesuj¹ - chcemy kod uporz¹dkowaæ oraz usystematyzowaæ.
+	Mo¿emy za³o¿yæ, ¿e ma³o standardowe kontenery nie istniej¹.
 
 	Zadanie testowa³em w Visual Studio 2019 oraz z kompilatorem g++-10.
 	W ¿adnym z tych przypadków nie by³o ¿adnych problemów z kompilacj¹ kodu.
 
-	Zrealizowane zadanie powinno zawieraæ kompilowalny zestaw plików. 
+	Zrealizowane zadanie powinno zawieraæ kompilowalny zestaw plików.
 	Zestaw ten powinien oczywiœcie zawieraæ wszystkie wymagane koncepty oraz poni¿sze szablony w zmodyfikowanej odpowiednio wersji.
 */
 
@@ -41,7 +40,7 @@ void print_container(const T& c)
 struct object
 {
 	object() = default;
-	explicit object(std::string _) : m{ _ } {}
+	object(std::string _) : m{ _ } {}
 
 	std::string m = "default";
 
